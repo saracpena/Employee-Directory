@@ -1,5 +1,5 @@
 import express from "express";
-import employees from "#employees";
+import employees from "#db/employees";
 
 const app = express();
 
@@ -12,7 +12,7 @@ const app = express();
     }
 );*/
 app.get("/", (req,res) => {
-    res.send("Hello, Employees!");
+    res.send("Hello employees!");
 });
 
 app.get("/employees", (req,res) => {
@@ -39,6 +39,12 @@ app.get("/employees/:id", (req,res) => {
     const employee = employees.find((employee) => {
   return employee.id === id;
 });
+
+
+
+if (!employee) {
+    return res.status(404).send("Employee not found.")
+}
     res.send(employee);
 });
 
