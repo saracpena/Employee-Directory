@@ -35,11 +35,10 @@ app.get("/route/:id", (req, res) => {
 */
 
 app.get("/employees/:id", (req,res) => {
-    const id = Number(req.params.id); //conver string to a number because why not?
+    const id = Number(req.params.id); //convert string to a number because why not?
     const employee = employees.find((employee) => {
   return employee.id === id;
 });
-
 
 
 if (!employee) {
